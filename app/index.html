@@ -25,35 +25,22 @@
 <script src="scripts/vendors/es5-shim.js"></script>
 <script src="scripts/vendors/json3.min.js"></script>
 <![endif]-->
-
 <div ng-controller="AppCtrl as appCtrl" class="ng-cloak">
 
   {{appCtrl.welcomeMessage}}
-
-
   <div class="row-fluid">
-    <div>
+    <div ng-repeat="stock in appCtrl.stocks">
       <div>
         <div class="stock-dash span3">
-          <span class="stock-name" >Twitter Inc</span>
-          <span class="stock-price" >$17.11</span>
-          <span class="stock-change positive" >10 %</span>
-        </div>
-      </div>
-    </div>
-
-    <div>
-      <div>
-        <div class="stock-dash span3">
-          <span class="stock-name" >Google Inc</span>
-          <span class="stock-price" >$398.11</span>
-          <span class="stock-change negative" >12 %</span>
+          <span class="stock-name" >{{stock.name}}</span>
+          <span class="stock-price" >${{stock.price}}</span>
+          <span class="stock-change " ng-class="appCtrl.getChangeClass(stock)" >{{appCtrl.getChange(stock)}} %</span>
         </div>
       </div>
     </div>
   </div>
-</div>
 
+</div>
 
 <script src="scripts/vendors/jquery.js"></script>
 <script src="scripts/vendors/jquery-ui-1.10.2.custom.js"></script>

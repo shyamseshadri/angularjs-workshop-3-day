@@ -27,7 +27,7 @@
 <![endif]-->
 <div ng-controller="AppCtrl as appCtrl" class="ng-cloak">
 
-  <div class="alert alert-info" ng-show="appCtrl.message" ng-bind="appCtrl.message"></div>
+  <div class="alert alert-info" ng-show="appCtrl.alertService.get()" ng-bind="appCtrl.alertService.get()"></div>
 
   <div class="row-fluid">
     <div ng-repeat="stock in appCtrl.stocks">
@@ -63,6 +63,7 @@
 <!-- build:js scripts/plugins.js -->
 <script src="scripts/app.js"></script>
 <script src="scripts/controllers.js"></script>
+<script src="scripts/services.js"></script>
 <!-- endbuild -->
 
 <!-- build:js({.tmp,app}) scripts/scripts.js -->

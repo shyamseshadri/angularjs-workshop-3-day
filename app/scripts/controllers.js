@@ -1,4 +1,4 @@
-angular.module('stockMarketApp').controller('AppCtrl', ['$scope', function($scope) {
+angular.module('stockMarketApp').controller('AppCtrl', ['AlertService', function(AlertService) {
   var self = this;
 
   self.stocks = [{
@@ -25,14 +25,12 @@ angular.module('stockMarketApp').controller('AppCtrl', ['$scope', function($scop
     }
   };
 
-    $scope.$on('registerClicked', function(event, message) {
-      self.message = message;
-    });
-}]).controller('RegisterCtrl', ['$rootScope', function($rootScope) {
+    self.alertService = AlertService;
+}]).controller('RegisterCtrl', ['AlertService', function(AlertService) {
   var self = this;
 
   self.register = function() {
-    $rootScope.$broadcast('registerClicked', 'Trying to register with ' + self.username + ' & ' + self.password);
+    AlertService.set('Trying to register with ' + self.username + ' & ' + self.password);
   };
 }]);
 

@@ -16,7 +16,7 @@
   <link rel="stylesheet" href="styles/main.css">
   <!-- endbuild -->
 </head>
-<body>
+<body ng-app="stockMarketApp">
 <!--[if lt IE 7]>
 <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
 <![endif]-->
@@ -25,6 +25,10 @@
 <script src="scripts/vendors/es5-shim.js"></script>
 <script src="scripts/vendors/json3.min.js"></script>
 <![endif]-->
+
+{{"This is a test of 1 + 2 ="}}
+{{1+2}}
+
 
 <div class="row-fluid">
   <div>
@@ -56,7 +60,7 @@
 <script src="scripts/vendors/angular-animate.js"></script>
 
 <!-- build:js scripts/plugins.js -->
-
+<script src="scripts/app.js"></script>
 <!-- endbuild -->
 
 <!-- build:js({.tmp,app}) scripts/scripts.js -->

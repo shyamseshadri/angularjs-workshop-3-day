@@ -1,0 +1,112 @@
+{
+  "TWTR": {
+    "ticker": "TWTR",
+    "name": "Twitter Inc",
+    "price": 23,
+    "previous": 21,
+    "size": "Medium",
+    "yearHigh": 213,
+    "yearLow": 111,
+    "history": []
+  },
+  "GOOG": {
+    "ticker": "GOOG",
+    "name": "Google Inc",
+    "price": 884,
+    "previous": 889,
+    "size": "Large",
+    "yearHigh": 950,
+    "yearLow": 654,
+    "history": []
+  },
+  "MSFT": {
+    "ticker": "MSFT",
+    "name": "Microsoft Inc",
+    "price": 29,
+    "previous": 21,
+    "size": "Large",
+    "yearHigh": 32,
+    "yearLow": 26,
+    "history": []
+  },
+  "LNKD": {
+    "ticker": "LNKD",
+    "name": "LinkedIn Inc",
+    "price": 85,
+    "previous": 88,
+    "size": "Small",
+    "yearHigh": 93,
+    "yearLow": 65,
+    "history": []
+  },
+  "YHOO": {
+    "ticker": "YHOO",
+    "name": "Yahoo Inc",
+    "price": 34,
+    "previous": 33,
+    "size": "Large",
+    "yearHigh": 36,
+    "yearLow": 12,
+    "history": []
+  },
+  "AMZN": {
+    "ticker": "AMZN",
+    "name": "Amazon Inc",
+    "price": 190,
+    "previous": 199,
+    "size": "Large",
+    "yearHigh": 222,
+    "yearLow": 187,
+    "history": []
+  },
+  "NFLX": {
+    "ticker": "NFLX",
+    "name": "Netflix Inc",
+    "price": 165,
+    "previous": 166,
+    "size": "Medium",
+    "yearHigh": 223,
+    "yearLow": 130,
+    "history": []
+  },
+  "FB": {
+    "ticker": "FB",
+    "name": "Facebook Inc",
+    "price": 35,
+    "previous": 35,
+    "size": "Medium",
+    "yearHigh": 39,
+    "yearLow": 16,
+    "history": []
+  },
+  "AOL": {
+    "ticker": "AOL",
+    "name": "AOL Inc",
+    "price": 12,
+    "previous": 22,
+    "size": "Large",
+    "yearHigh": 15,
+    "yearLow": 6,
+    "history": []
+  },
+  "MOVE": {
+    "ticker": "MOVE",
+    "name": "Move Inc",
+    "price": 56,
+    "previous": 56,
+    "size": "Small",
+    "yearHigh": 69,
+    "yearLow": 34,
+    "history": []
+  },
+  "BIDU": {
+    "ticker": "BIDU",
+    "name": "Baidu Inc",
+    "price": 546,
+    "previous": 554,
+    "size": "Large",
+    "yearHigh": 668,
+    "yearLow": 522,
+    "history": []
+  }
+}

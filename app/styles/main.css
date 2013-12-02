@@ -1,0 +1,81 @@
+body {
+    background: #fafafa;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: #333;
+}
+
+.hero-unit {
+    margin: 50px auto 0 auto;
+    width: 300px;
+    font-size: 18px;
+    font-weight: 200;
+    line-height: 30px;
+    background-color: #eee;
+    border-radius: 6px;
+    padding: 60px;
+}
+
+.hero-unit h1 {
+    font-size: 60px;
+    line-height: 1;
+    letter-spacing: -1px;
+}
+
+.stock {
+  display: inline-block;
+}
+
+.stock-dash {
+  margin: 25px;
+  text-align: center;
+  background-color: black;
+  border-radius: 5px;
+  color: white;
+  height: 100px;
+}
+.stock-dash .stock-name, .stock-dash .stock-price, .stock-dash .stock-name, .stock-dash .toggle {
+  display: block;
+}
+
+.stock-dash .stock-name {
+  font-weight: bold;
+  font-size: 20px;
+  padding: 5px;
+  font-style: italic;
+  border-bottom: 1px solid white;
+}
+
+.positive {
+  color: green;
+  font-weight: bold;
+}
+
+.negative {
+  color: red;
+  font-weight: bold;
+}
+
+ul {
+  list-style: none;
+}
+.mystock.ng-enter,
+.mystock.ng-leave {
+  -webkit-transition: 0.5s linear all;
+  -moz-transition: 0.5s linear all;
+  -o-transition: 0.5s linear all;
+  transition: 0.5s linear all;
+}
+
+.mystock.ng-enter {
+  opacity:0;
+}
+.mystock.ng-enter.ng-enter-active {
+  opacity:1;
+}
+
+.mystock.ng-leave {
+  opacity:1;
+}
+.mystock.ng-leave.ng-leave-active {
+  opacity:0;
+}

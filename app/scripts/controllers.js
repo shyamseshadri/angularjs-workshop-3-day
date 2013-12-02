@@ -1,4 +1,4 @@
-angular.module('stockMarketApp').controller('AppCtrl', [function() {
+angular.module('stockMarketApp').controller('AppCtrl', ['$scope', function($scope) {
   var self = this;
 
   self.stocks = [{
@@ -24,12 +24,15 @@ angular.module('stockMarketApp').controller('AppCtrl', [function() {
       negative: stock.price <= stock.previous
     }
   };
-}]).controller('RegisterCtrl', ['$window', function($window) {
+
+    $scope.$on('registerClicked', function(event, message) {
+      self.message = message;
+    });
+}]).controller('RegisterCtrl', ['$rootScope', function($rootScope) {
   var self = this;
 
   self.register = function() {
-    self.message = 'Trying to register with ' + self.username + ' & ' + self.password;
-    $window.alert(self.message);
+    $rootScope.$broadcast('registerClicked', 'Trying to register with ' + self.username + ' & ' + self.password);
   };
 }]);
 

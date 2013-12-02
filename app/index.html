@@ -27,7 +27,6 @@
 <![endif]-->
 <div ng-controller="AppCtrl as appCtrl" class="ng-cloak">
 
-  {{appCtrl.welcomeMessage}}
   <div class="row-fluid">
     <div ng-repeat="stock in appCtrl.stocks">
       <div>
@@ -38,6 +37,18 @@
         </div>
       </div>
     </div>
+  </div>
+
+</div>
+
+<div ng-controller="RegisterCtrl as registerCtrl">
+  <div class="alert alert-info" ng-show="registerCtrl.message" ng-bind="registerCtrl.message"></div>
+  <div class="hero-unit">
+    <form name="registerForm" ng-submit="registerCtrl.register()">
+      <input type="text" ng-model="registerCtrl.username" placeholder="Username" required="">
+      <input type="password" ng-model="registerCtrl.password" placeholder="password" required="">
+      <input type="submit" value="Register Now" class="btn btn-success btn-large" ng-disabled="registerForm.$invalid">
+    </form>
   </div>
 
 </div>

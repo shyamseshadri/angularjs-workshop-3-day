@@ -24,4 +24,11 @@ angular.module('stockMarketApp').controller('AppCtrl', [function() {
       negative: stock.price <= stock.previous
     }
   };
+}]).controller('RegisterCtrl', [function() {
+  var self = this;
+
+  self.register = function() {
+    self.message = 'Trying to register with ' + self.username + ' & ' + self.password;
+  };
 }]);
+

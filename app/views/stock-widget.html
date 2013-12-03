@@ -1,0 +1,5 @@
+<div class="stock-dash span3">
+  <span class="stock-name" >{{stock.name}}</span>
+  <span class="stock-price" >{{stock.price | currency}}</span>
+  <span class="stock-change " ng-class="landingCtrl.getChangeClass(stock)" >{{landingCtrl.getChange(stock)}} %</span>
+</div>

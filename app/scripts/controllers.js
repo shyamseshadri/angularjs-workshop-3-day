@@ -1,7 +1,8 @@
-angular.module('stockMarketApp').controller('AppCtrl', ['AlertService', function(AlertService) {
+angular.module('stockMarketApp').controller('AppCtrl', ['AlertService', 'UserService', function(AlertService, UserService) {
 
   var self = this;
   self.alertService = AlertService;
+  self.userService = UserService;
 
 }]).controller('LandingCtrl', ['StockService', function(StockService) {
   var self = this;
@@ -19,15 +20,19 @@ angular.module('stockMarketApp').controller('AppCtrl', ['AlertService', function
       negative: stock.price <= stock.previous
     }
   };
-}]).controller('AuthCtrl', ['AlertService', 'UserService', function(AlertService, UserService) {
+}]).controller('AuthCtrl', ['AlertService', 'UserService', '$location', function(AlertService, UserService, $location) {
   var self = this;
 
   self.login = function() {
-    AlertService.set('Login Clicked');
+    UserService.login(self.username, self.password).then(function(user) {
+      $location.path('/mine');
+    }, function(err) {
+      AlertService.set(err.msg);
+    });
   };
   self.register = function() {
     UserService.register(self.username, self.password).then(function(user) {
-      AlertService.set('Successfully registered ' + self.username);
+      $location.path('/mine');
     }, function(err) {
       AlertService.set(err.data.msg);
     });
@@ -49,5 +54,20 @@ angular.module('stockMarketApp').controller('AppCtrl', ['AlertService', function
         self.filters.favorite = true;
       }
     };
+
+    self.getChange = function(stock) {
+      return Math.ceil(((stock.price - stock.previous) / stock.previous) * 100);
+    };
+    self.getChangeClass = function(stock) {
+      return {
+        positive: stock.price > stock.previous,
+        negative: stock.price <= stock.previous
+      }
+    };
+}]).controller('LogoutCtrl', ['UserService', '$location', function(UserService, $location) {
+  var redirect = function() {
+    $location.path('/');
+  };
+  UserService.logout().then(redirect, redirect);
 }]);
 

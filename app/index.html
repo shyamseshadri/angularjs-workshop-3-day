@@ -28,8 +28,12 @@
 <div ng-controller="AppCtrl as appCtrl" class="ng-cloak">
 
   <div class="alert alert-info" ng-show="appCtrl.alertService.get()" ng-bind="appCtrl.alertService.get()"></div>
+  <div class="pull-right">
+    <span ng-hide="appCtrl.userService.isLoggedIn()"><a href="#/login">Login</a> | <a href="#/register">Sign Up</a></span>
+    <span ng-show="appCtrl.userService.isLoggedIn()"><a href="#/logout">Logout</a></span>
+  </div>
 
-  <div ng-include="'views/list.html'"></div>
+  <div ng-view></div>
 
 </div>
 

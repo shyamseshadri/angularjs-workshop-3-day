@@ -31,9 +31,13 @@ angular.module('stockMarketApp').controller('AppCtrl', ['AlertService', 'UserSer
 }]).controller('MyStocksCtrl', ['StockService', function(StockService) {
   var self = this;
     self.stocks = [];
-    StockService.query().success(function(stocks) {
-      self.stocks = stocks;
-    });
+    self.fetchStocks = function() {
+      StockService.query().success(function(stocks) {
+        self.stocks = stocks;
+      });
+    };
+    self.fetchStocks();
+
     self.filters = {
       favorite: true
     };

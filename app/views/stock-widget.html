@@ -2,4 +2,9 @@
   <span class="stock-name" >{{stockData.name}}</span>
   <span class="stock-price" >{{stockData.price | currency}}</span>
   <span class="stock-change " ng-class="getChangeClass()" >{{getChange()}} %</span>
+  <span class="toggle" ng-show="shouldShowButtons()">
+    <button class="btn btn-success" ng-click="toggleFavorite()" ng-hide="stockData.favorite">Add</button>
+    <button class="btn btn-warning" ng-click="toggleFavorite()" ng-show="stockData.favorite">Remove</button>
+  </span>
+
 </div>

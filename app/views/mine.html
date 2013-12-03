@@ -4,7 +4,7 @@
 
 <div class="row-fluid">
   <div ng-repeat="stock in myStocksCtrl.stocks | filter:myStocksCtrl.filters"  class="mystock">
-    <div ng-include="'views/stock-widget.html'">
+    <div stock-widget>
     </div>
   </div>
 </div>

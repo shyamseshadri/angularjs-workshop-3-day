@@ -1,10 +1,14 @@
-angular.module('stockMarketApp').controller('AppCtrl', ['AlertService', 'StockService', function(AlertService, StockService) {
-  var self = this;
+angular.module('stockMarketApp').controller('AppCtrl', ['AlertService', function(AlertService) {
 
-    self.stocks = [];
-    StockService.query().success(function(stocks) {
-      self.stocks = stocks;
-    });
+  var self = this;
+  self.alertService = AlertService;
+
+}]).controller('LandingCtrl', ['StockService', function(StockService) {
+  var self = this;
+  self.stocks = [];
+  StockService.query().success(function(stocks) {
+    self.stocks = stocks;
+  });
 
   self.getChange = function(stock) {
     return Math.ceil(((stock.price - stock.previous) / stock.previous) * 100);
@@ -15,11 +19,12 @@ angular.module('stockMarketApp').controller('AppCtrl', ['AlertService', 'StockSe
       negative: stock.price <= stock.previous
     }
   };
-
-    self.alertService = AlertService;
-}]).controller('RegisterCtrl', ['AlertService', 'UserService', function(AlertService, UserService) {
+}]).controller('AuthCtrl', ['AlertService', 'UserService', function(AlertService, UserService) {
   var self = this;
 
+  self.login = function() {
+    AlertService.set('Login Clicked');
+  };
   self.register = function() {
     UserService.register(self.username, self.password).then(function(user) {
       AlertService.set('Successfully registered ' + self.username);
@@ -27,5 +32,22 @@ angular.module('stockMarketApp').controller('AppCtrl', ['AlertService', 'StockSe
       AlertService.set(err.data.msg);
     });
   };
+}]).controller('MyStocksCtrl', ['StockService', function(StockService) {
+  var self = this;
+    self.stocks = [];
+    StockService.query().success(function(stocks) {
+      self.stocks = stocks;
+    });
+    self.filters = {
+      favorite: true
+    };
+
+    self.toggleFilter = function() {
+      if (self.filters.favorite) {
+        delete self.filters.favorite;
+      } else {
+        self.filters.favorite = true;
+      }
+    };
 }]);
 

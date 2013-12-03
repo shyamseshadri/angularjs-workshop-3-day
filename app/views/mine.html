@@ -1,0 +1,15 @@
+
+<button class="btn btn-success" ng-click="myStocksCtrl.toggleFilter()" ng-hide="myStocksCtrl.filters.favorite">Show Mine</button>
+<button class="btn btn-success" ng-click="myStocksCtrl.toggleFilter()" ng-show="myStocksCtrl.filters.favorite">Show All</button>
+
+<div class="row-fluid">
+  <div ng-repeat="stock in myStocksCtrl.stocks | filter:myStocksCtrl.filters"  class="mystock">
+    <div>
+      <div class="stock-dash span3">
+        <span class="stock-name" >{{stock.name}}</span>
+        <span class="stock-price" >${{stock.price}}</span>
+        <span class="stock-change " ng-class="myStocksCtrl.getChangeClass(stock)" >{{myStocksCtrl.getChange(stock)}} %</span>
+      </div>
+    </div>
+  </div>
+</div>

@@ -29,28 +29,7 @@
 
   <div class="alert alert-info" ng-show="appCtrl.alertService.get()" ng-bind="appCtrl.alertService.get()"></div>
 
-  <div class="row-fluid">
-    <div ng-repeat="stock in appCtrl.stocks">
-      <div>
-        <div class="stock-dash span3">
-          <span class="stock-name" >{{stock.name}}</span>
-          <span class="stock-price" >${{stock.price}}</span>
-          <span class="stock-change " ng-class="appCtrl.getChangeClass(stock)" >{{appCtrl.getChange(stock)}} %</span>
-        </div>
-      </div>
-    </div>
-  </div>
-
-</div>
-
-<div ng-controller="RegisterCtrl as registerCtrl">
-  <div class="hero-unit">
-    <form name="registerForm" ng-submit="registerCtrl.register()">
-      <input type="text" ng-model="registerCtrl.username" placeholder="Username" required="">
-      <input type="password" ng-model="registerCtrl.password" placeholder="password" required="">
-      <input type="submit" value="Register Now" class="btn btn-success btn-large" ng-disabled="registerForm.$invalid">
-    </form>
-  </div>
+  <div ng-include="'views/list.html'"></div>
 
 </div>
 

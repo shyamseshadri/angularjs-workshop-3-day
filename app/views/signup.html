@@ -1,0 +1,7 @@
+<div class="hero-unit" ng-controller="AuthCtrl as signupCtrl">
+  <form name="signupForm" ng-submit="signupCtrl.register()">
+    <input type="text" ng-model="signupCtrl.username" placeholder="Username" required="">
+    <input type="password" ng-model="signupCtrl.password" placeholder="password" required="">
+    <input type="submit" class="btn btn-success btn-large" ng-disabled="signupForm.$invalid" value="Register"></button>
+  </form>
+</div>

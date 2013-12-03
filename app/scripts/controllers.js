@@ -17,11 +17,15 @@ angular.module('stockMarketApp').controller('AppCtrl', ['AlertService', 'StockSe
   };
 
     self.alertService = AlertService;
-}]).controller('RegisterCtrl', ['AlertService', function(AlertService) {
+}]).controller('RegisterCtrl', ['AlertService', 'UserService', function(AlertService, UserService) {
   var self = this;
 
   self.register = function() {
-    AlertService.set('Trying to register with ' + self.username + ' & ' + self.password);
+    UserService.register(self.username, self.password).then(function(user) {
+      AlertService.set('Successfully registered ' + self.username);
+    }, function(err) {
+      AlertService.set(err.data.msg);
+    });
   };
 }]);
 

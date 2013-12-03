@@ -19,4 +19,10 @@ angular.module('stockMarketApp')
         return $http.get('/api/stocks');
       }
     };
-  }])
+  }]).factory('UserService', ['$http', function($http) {
+    return  {
+      register: function(username, pwd) {
+        return $http.post('/api/register', {username: username, password: pwd});
+      }
+    };
+  }]);

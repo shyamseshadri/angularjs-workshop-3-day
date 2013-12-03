@@ -46,6 +46,13 @@ angular.module('stockMarketApp')
       },
       register: function(username, pwd) {
         return $http.post('/api/register', {username: username, password: pwd}).then(loginSuccess, loginFailure);
+      },
+      tokens: function() {
+        if (loggedIn) {
+          return $q.when(user);
+        } else {
+          return $http.post('/api/token', {}).then(loginSuccess, loginFailure);
+        }
       }
     };
   }]);

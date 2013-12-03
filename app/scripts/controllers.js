@@ -1,19 +1,10 @@
-angular.module('stockMarketApp').controller('AppCtrl', ['AlertService', function(AlertService) {
+angular.module('stockMarketApp').controller('AppCtrl', ['AlertService', 'StockService', function(AlertService, StockService) {
   var self = this;
 
-  self.stocks = [{
-    "ticker": "TWTR",
-    "name": "Twitter Inc",
-    "price": 23,
-    "previous": 21,
-    "size": "Medium"
-  }, {
-    "ticker": "GOOG",
-    "name": "Google Inc",
-    "price": 884,
-    "previous": 899,
-    "size": "Large"
-  }];
+    self.stocks = [];
+    StockService.query().success(function(stocks) {
+      self.stocks = stocks;
+    });
 
   self.getChange = function(stock) {
     return Math.ceil(((stock.price - stock.previous) / stock.previous) * 100);

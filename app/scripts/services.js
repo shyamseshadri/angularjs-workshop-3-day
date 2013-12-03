@@ -12,4 +12,11 @@ angular.module('stockMarketApp')
         return message;
       }
     };
-  })
+  }).factory('StockService', ['$http', function($http) {
+
+    return {
+      query: function() {
+        return $http.get('/api/stocks');
+      }
+    };
+  }])

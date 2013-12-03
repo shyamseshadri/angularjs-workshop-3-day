@@ -11,15 +11,6 @@ angular.module('stockMarketApp').controller('AppCtrl', ['AlertService', 'UserSer
     self.stocks = stocks;
   });
 
-  self.getChange = function(stock) {
-    return Math.ceil(((stock.price - stock.previous) / stock.previous) * 100);
-  };
-  self.getChangeClass = function(stock) {
-    return {
-      positive: stock.price > stock.previous,
-      negative: stock.price <= stock.previous
-    }
-  };
 }]).controller('AuthCtrl', ['AlertService', 'UserService', '$location', function(AlertService, UserService, $location) {
   var self = this;
 
@@ -55,15 +46,6 @@ angular.module('stockMarketApp').controller('AppCtrl', ['AlertService', 'UserSer
       }
     };
 
-    self.getChange = function(stock) {
-      return Math.ceil(((stock.price - stock.previous) / stock.previous) * 100);
-    };
-    self.getChangeClass = function(stock) {
-      return {
-        positive: stock.price > stock.previous,
-        negative: stock.price <= stock.previous
-      }
-    };
 }]).controller('LogoutCtrl', ['UserService', '$location', function(UserService, $location) {
   var redirect = function() {
     $location.path('/');

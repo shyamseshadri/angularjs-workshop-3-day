@@ -33,6 +33,9 @@
     <span ng-show="appCtrl.userService.isLoggedIn()"><a href="#/logout">Logout</a></span>
   </div>
 
+  <input type="text" ng-model="$parent.appCtrl.curDate" when-select="appCtrl.dateSelected(date)" datepicker> {{appCtrl.curDate}}
+
+
   <div ng-view></div>
 
 </div>

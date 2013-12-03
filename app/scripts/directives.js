@@ -78,4 +78,31 @@ angular.module('stockMarketApp').directive('stockWidget', ['StockService', 'User
 
     }
   };
-}]);
+}]).directive('datepicker', [function() {
+    return {
+      restrict: 'A',
+      require: 'ngModel',
+      scope: {
+        whenSelect: '&'
+      },
+      link: function($scope, $element, $attrs, ngModelCtrl) {
+
+        var configObj = {
+          onSelect: function(dateTxt) {
+            ngModelCtrl.$setViewValue(dateTxt);
+            if ($scope.whenSelect) {
+              $scope.whenSelect({date: dateTxt});
+            }
+
+            $scope.$apply();
+          }
+        };
+
+        ngModelCtrl.$render = function() {
+          $element.datepicker('setDate', ngModelCtrl.$viewValue);
+        };
+
+        $element.datepicker(configObj);
+      }
+    };
+  }]);

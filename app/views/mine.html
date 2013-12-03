@@ -1,6 +1,6 @@
 
-<button class="btn btn-success" ng-click="myStocksCtrl.toggleFilter()" ng-hide="myStocksCtrl.filters.favorite">Show Mine</button>
-<button class="btn btn-success" ng-click="myStocksCtrl.toggleFilter()" ng-show="myStocksCtrl.filters.favorite">Show All</button>
+<button class="btn btn-success mine" ng-click="myStocksCtrl.toggleFilter()" ng-hide="myStocksCtrl.filters.favorite">Show Mine</button>
+<button class="btn btn-success all" ng-click="myStocksCtrl.toggleFilter()" ng-show="myStocksCtrl.filters.favorite">Show All</button>
 
 <div class="row-fluid">
   <div ng-repeat="stock in myStocksCtrl.stocks | filter:myStocksCtrl.filters"  class="mystock">

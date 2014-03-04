@@ -73,3 +73,49 @@ describe('Controller: AuthCtrl', function () {
     expect(userService.isLoggedIn()).toBeTruthy();
   });
 });
+
+describe('Directive: Stock Widget', function() {
+
+  // load the controller's module
+  beforeEach(module('stockMarketApp'));
+
+  var compile, rs, mockBackend, interval;
+
+  // Initialize the controller and a mock scope
+  beforeEach(inject(function ($compile, $rootScope, $httpBackend, $interval) {
+    rs = $rootScope;
+    compile = $compile;
+    mockBackend = $httpBackend;
+    interval = $interval;
+  }));
+
+  it('should create a stock widget', function() {
+    var scope = rs.$new();
+
+
+    mockBackend.expectGET('views/stock-widget.html').respond('<div>{{stockData.ticker}}</div>');
+
+    scope.myStock = {
+      price: 100,
+      previous: 200,
+      history: [10, 20],
+      ticker: 'TWTR'
+    };
+    var elem = compile('<div stock-widget stock-data="myStock"></div>')(scope);
+
+    scope.$digest();
+    mockBackend.flush();
+
+    expect(elem.html()).toEqual('<div class="ng-binding">TWTR</div>');
+    expect(elem.scope().getChangeClass()).toEqual({positive: false, negative: true});
+
+    mockBackend.expectGET('/api/stocks/TWTR').respond({price: 150, previous: 100, history: [1, 3, 2]});
+
+    interval.flush(5100);
+    mockBackend.flush();
+
+    expect(elem.scope().stockData.price).toEqual(150);
+    expect(elem.scope().stockData.previous).toEqual(100);
+    expect(elem.scope().stockData.history).toEqual([1, 3, 2]);
+  });
+});

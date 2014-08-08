@@ -1,34 +1,27 @@
-angular.module('stockMarketApp').controller('AppCtrl', [function() {
+angular.module('stockMarketApp')
+  .controller('ListCtrl', ['TodoService', function(TodoService) {
   var self = this;
 
-  self.stocks = [{
-    "ticker": "TWTR",
-    "name": "Twitter Inc",
-    "price": 23,
-    "previous": 21,
-    "size": "Medium"
-  }, {
-    "ticker": "GOOG",
-    "name": "Google Inc",
-    "price": 884,
-    "previous": 899,
-    "size": "Large"
-  }];
+    self.getTodos = TodoService.get;
+    self.remove = TodoService.remove;
 
-  self.getChange = function(stock) {
-    return Math.ceil(((stock.price - stock.previous) / stock.previous) * 100);
-  };
-  self.getChangeClass = function(stock) {
-    return {
-      positive: stock.price > stock.previous,
-      negative: stock.price <= stock.previous
-    }
-  };
-}]).controller('RegisterCtrl', [function() {
+}])
+  .controller('AddCtrl', ['TodoService',
+    function(TodoService) {
   var self = this;
 
-  self.register = function() {
-    self.message = 'Trying to register with ' + self.username + ' & ' + self.password;
+      self.todo = {
+        author: 'Shyam',
+        label: '',
+        completed: false
+      };
+  self.add = function() {
+    TodoService.add(self.todo);
+    self.todo = {
+      author: 'Shyam',
+      label: '',
+      completed: false
+    };
   };
 }]);
 

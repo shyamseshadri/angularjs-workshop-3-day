@@ -25,15 +25,20 @@
 <script src="scripts/vendors/es5-shim.js"></script>
 <script src="scripts/vendors/json3.min.js"></script>
 <![endif]-->
-<div ng-controller="AppCtrl as appCtrl" class="ng-cloak">
+<div ng-controller="ListCtrl as listCtrl" class="ng-cloak">
 
   <div class="row-fluid">
-    <div ng-repeat="stock in appCtrl.stocks">
+    <div ng-repeat="todo in listCtrl.getTodos() track by todo.id">
       <div>
-        <div class="stock-dash span3">
-          <span class="stock-name" >{{stock.name}}</span>
-          <span class="stock-price" >${{stock.price}}</span>
-          <span class="stock-change " ng-class="appCtrl.getChangeClass(stock)" >{{appCtrl.getChange(stock)}} %</span>
+        <div class="stock-dash span3" ng-class="{positive: todo.completed}">
+          {{todo.$$hashKey}}
+          <input type="checkbox" ng-model="todo.completed">
+
+          <span class="stock-name" >{{todo.label}}</span>
+          <span class="stock-price" >{{todo.author}}</span>
+          <button class="btn btn-danger"
+                  ng-disabled="!todo.completed"
+              ng-click="listCtrl.remove($index)">Remove</button>
         </div>
       </div>
     </div>
@@ -41,13 +46,12 @@
 
 </div>
 
-<div ng-controller="RegisterCtrl as registerCtrl">
-  <div class="alert alert-info" ng-show="registerCtrl.message" ng-bind="registerCtrl.message"></div>
+<div ng-controller="AddCtrl as addCtrl">
   <div class="hero-unit">
-    <form name="registerForm" ng-submit="registerCtrl.register()">
-      <input type="text" ng-model="registerCtrl.username" placeholder="Username" required="">
-      <input type="password" ng-model="registerCtrl.password" placeholder="password" required="">
-      <input type="submit" value="Register Now" class="btn btn-success btn-large" ng-disabled="registerForm.$invalid">
+    <form name="registerForm" ng-submit="addCtrl.add()">
+      <input type="text" ng-model="addCtrl.todo.label" placeholder="Label" required="">
+      <input type="text" ng-model="addCtrl.todo.author" placeholder="Author" required="">
+      <input type="submit" value="Add" class="btn btn-success btn-large" ng-disabled="registerForm.$invalid">
     </form>
   </div>
 
@@ -62,6 +66,7 @@
 <!-- build:js scripts/plugins.js -->
 <script src="scripts/app.js"></script>
 <script src="scripts/controllers.js"></script>
+<script src="scripts/services.js"></script>
 <!-- endbuild -->
 
 <!-- build:js({.tmp,app}) scripts/scripts.js -->
